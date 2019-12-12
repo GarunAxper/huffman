@@ -20,7 +20,7 @@ namespace Huffman
  
             BitArray encoded = huffmanTree.Encode(input);
  
-            Console.Write("Գաղտնագրված տեքստ․ ");
+            Console.Write("Կոդավորված տեքստ․ ");
             foreach (bool bit in encoded)
             {
                 Console.Write((bit ? 1 : 0) + "");

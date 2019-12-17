@@ -12,7 +12,7 @@ namespace Huffman
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("Մուտքագրեք տեքստը․");
+            Console.Write("Enter Text․");
             string input = Console.ReadLine();
             HuffmanTree huffmanTree = new HuffmanTree();
  
@@ -20,17 +20,26 @@ namespace Huffman
  
             BitArray encoded = huffmanTree.Encode(input);
  
-            Console.Write("Կոդավորված տեքստ․ ");
+            Console.Write("Encoded Text․ ");
             foreach (bool bit in encoded)
             {
                 Console.Write((bit ? 1 : 0) + "");
             }
             Console.WriteLine();
- 
-            string decoded = huffmanTree.Decode(encoded);
- 
-            Console.WriteLine("Վերծանված տեքստ․ " + decoded);
- 
+            Console.WriteLine();
+
+            //string decoded = huffmanTree.Decode(encoded);
+            foreach (var item in huffmanTree.Frequencies)
+            {
+                Console.Write(item.Key + "  " + item.Value + "  ");
+                List<bool> key = huffmanTree.Root.Traverse(item.Key, new List<bool>());
+                foreach (var bit in key)
+                {
+                    Console.Write((bit ? 1 : 0));
+                }
+                Console.WriteLine();
+            }
+
             Console.ReadLine();
         }
     }

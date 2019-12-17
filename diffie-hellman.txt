@@ -1,0 +1,43 @@
+#include<stdio.h> 
+#include<math.h> 
+#include<iostream> 
+  
+// Power function to return value of a ^ b mod P 
+long long int power(long long int a, long long int b, 
+                                     long long int P) 
+{  
+    if (b == 1) 
+        return a; 
+  
+    else
+        return (((long long int)pow(a, b)) % P); 
+} 
+  
+//Driver program 
+int main() 
+{ 
+    long long int P, G, x, a, y, b, ka, kb;  
+      
+    std::cout << "The value of P : ";  
+    std::cin >> P;
+  
+    std::cout << "The value of G : ";  
+    std::cin >> G;
+  
+    std::cout << "The private key a for Person1 : ";  
+    std::cin >> a;
+    x = power(G, a, P);
+      
+      
+    std::cout << "The private key a for Person2 : ";  
+    std::cin >> b;
+    y = power(G, b, P); 
+    
+    ka = power(y, a, P); 
+    kb = power(x, b, P); 
+      
+    printf("Secret key for the Person1 is : %lld\n", ka); 
+    printf("Secret Key for the Person2 is : %lld\n", kb); 
+      
+    return 0; 
+}
